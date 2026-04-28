@@ -1,0 +1,90 @@
+workflows:
+  android-debug:
+    name: Android Debug APK
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      node: latest
+      java: 21
+    scripts:
+      - name: Install dependencies
+        script: npm ci
+      - name: Sync Capacitor
+        script: npm run cap:sync
+      - name: Build debug APK
+        script: |
+          cd android
+          ./gradlew assembleDebug
+    artifacts:
+      - android/app/build/outputs/**/*.apk
+
+  android-release:
+    name: Android Release AAB
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      node: latest
+      java: 21
+      groups:
+        - google_play_credentials
+    scripts:
+      - name: Install dependencies
+        script: npm ci
+      - name: Sync Capacitor
+        script: npm run cap:sync
+      - name: Decode keystore
+        script: |
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/app/release.keystore
+          cat > android/keystore.properties <<EOF
+          storeFile=release.keystore
+          storePassword=$ANDROID_KEYSTORE_PASSWORD
+          keyAlias=$ANDROID_KEY_ALIAS
+          keyPassword=$ANDROID_KEY_PASSWORD
+          EOF
+      - name: Build release AAB
+        script: |
+          cd android
+          ./gradlew bundleRelease
+    artifacts:
+      - android/app/build/outputs/**/*.aab
+
+  ios-testflight:
+    name: iOS TestFlight Build
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+    environment:
+      node: latest
+      xcode: latest
+      groups:
+        - app_store_connect
+      vars:
+        XCODE_PROJECT: ios/App/App.xcodeproj
+        XCODE_SCHEME: App
+        BUNDLE_ID: com.eighteensitters.app
+    integrations:
+      app_store_connect: app_store_connect_api_key
+    scripts:
+      - name: Install dependencies
+        script: npm ci
+      - name: Sync Capacitor
+        script: npm run cap:sync
+      - name: Set up code signing
+        script: |
+          keychain initialize
+          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
+          keychain add-certificates
+          xcode-project use-profiles
+      - name: Build IPA
+        script: |
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        beta_groups:
+          - Internal Testers

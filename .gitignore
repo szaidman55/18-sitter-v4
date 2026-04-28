@@ -1,0 +1,9 @@
+dist/
+node_modules/
+.DS_Store
+*.log
+upload-files.txt
+deploy-smoke-mobile.png
+android/keystore.properties
+android/app/*.keystore
+android/app/*.jks

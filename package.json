@@ -1,0 +1,31 @@
+{
+  "name": "18-sitter-v4",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Deployable 18 Sitters v4 static app prototype.",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "cap:sync": "npm run build && npx cap sync",
+    "cap:android": "npm run cap:sync && npx cap open android",
+    "cap:ios": "npm run cap:sync && npx cap open ios",
+    "check": "node scripts/check.js",
+    "start": "node scripts/serve.js"
+  },
+  "keywords": [
+    "18-sitters",
+    "babysitting",
+    "static-app",
+    "pwa"
+  ],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@capacitor/android": "^8.3.1",
+    "@capacitor/cli": "^8.3.1",
+    "@capacitor/core": "^8.3.1",
+    "@capacitor/ios": "^8.3.1"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.3.0",
+    "sharp": "^0.34.5"
+  }
+}

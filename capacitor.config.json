@@ -1,0 +1,15 @@
+{
+  "appId": "com.eighteensitters.app",
+  "appName": "18 Sitters",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "ios": {
+    "contentInset": "automatic"
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}
