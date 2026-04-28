@@ -1,10 +1,10 @@
 const CACHE_NAME = "18-sitters-v4-static-v1";
 const APP_SHELL = [
-  "/",
-  "/index.html",
-  "/manifest.webmanifest",
-  "/icons/icon-192.png",
-  "/icons/icon-512.png"
+  "./",
+  "index.html",
+  "manifest.webmanifest",
+  "icons/icon-192.png",
+  "icons/icon-512.png"
 ];
 
 self.addEventListener("install", (event) => {
@@ -30,6 +30,6 @@ self.addEventListener("fetch", (event) => {
         caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
         return response;
       })
-      .catch(() => caches.match(event.request).then((cached) => cached || caches.match("/index.html")))
+      .catch(() => caches.match(event.request).then((cached) => cached || caches.match("index.html")))
   );
 });
