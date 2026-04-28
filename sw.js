@@ -1,4 +1,4 @@
-const CACHE_NAME = "18-sitters-v4-static-v1";
+const CACHE_NAME = "18-sitters-v4-static-v2";
 const APP_SHELL = [
   "./",
   "index.html",

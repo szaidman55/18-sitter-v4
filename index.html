@@ -12,7 +12,7 @@
 <meta property="og:description" content="Trusted care. Jewish values.">
 <meta property="og:type" content="website">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/svg+xml" href="brand/18-sitters-icon-only-clean.svg">
+<link rel="icon" type="image/svg+xml" href="brand/18-sitters-app-icon-ivory-adapted.svg">
 <link rel="apple-touch-icon" href="icons/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,9 +43,8 @@ body{background:#EDE9DF;background-image:radial-gradient(ellipse 80% 50% at 50% 
 .sb-i{display:flex;gap:5px;align-items:center;font-size:11px;color:var(--navy);}
 .sb.on-dark .sb-t,.sb.on-dark .sb-i{color:var(--ivory);}
 
-.logo-mark .arc{fill:none;stroke:var(--gold);stroke-linecap:round;}
-.logo-mark .num{font-family:'Cormorant Garamond','Playfair Display',serif;font-weight:500;fill:var(--navy);}
-.logo-mark.on-dark .num{fill:var(--ivory);}
+.brand-img{display:block;width:100%;height:auto;object-fit:contain;}
+.brand-img.icon{aspect-ratio:1/1;}
 /* platform-aware visibility for store CTAs */
 body[data-platform="ios"] .android-only{display:none !important;}
 body[data-platform="android"] .apple-only{display:none !important;}
@@ -110,7 +109,8 @@ select.inp option{background:#fff;color:var(--navy);}
 /* SPLASH */
 #s-splash{background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(200,166,106,0.10) 0%,transparent 65%),var(--navy);justify-content:space-between;color:var(--ivory);}
 .sp-top{display:flex;flex-direction:column;align-items:center;padding:78px 32px 0;}
-.sp-mark{width:128px;height:128px;margin-bottom:18px;}
+.sp-mark{width:142px;height:142px;margin-bottom:18px;}
+.sp-mark .brand-img{filter:drop-shadow(0 14px 28px rgba(0,0,0,0.16));}
 .sp-wordmark{font-weight:500;color:var(--ivory);text-transform:uppercase;letter-spacing:0.48em;font-size:14px;}
 .sp-tagline{font-weight:400;color:var(--gold);text-transform:uppercase;letter-spacing:0.32em;font-size:9px;margin-top:14px;}
 .sp-divider{width:32px;height:1px;background:var(--gold);margin:24px 0;opacity:0.6;}
@@ -444,7 +444,7 @@ select.inp option{background:#fff;color:var(--navy);}
 .side-panel{width:100%;max-width:300px;display:flex;flex-direction:column;gap:14px;padding-top:32px;order:2;}
 .panel-card{background:var(--ivory);border:1px solid rgba(13,27,51,0.10);border-radius:18px;padding:18px;box-shadow:0 4px 14px rgba(13,27,51,0.06);}
 .panel-mark{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);}
-.panel-mark svg{width:42px;height:42px;flex-shrink:0;}
+.panel-mark .brand-img{width:42px;height:42px;flex-shrink:0;}
 .pm-text{display:flex;flex-direction:column;}
 .pm-name{font-weight:500;font-size:11px;color:var(--navy);text-transform:uppercase;letter-spacing:0.34em;}
 .pm-tag{font-size:8px;color:var(--gold-warm);text-transform:uppercase;letter-spacing:0.24em;margin-top:4px;font-weight:500;}
@@ -529,7 +529,7 @@ body:not(.show-prototype-panel) .phone{box-shadow:0 24px 80px rgba(13,27,51,0.18
 <!-- 1. SPLASH -->
 <div class="screen active" id="s-splash">
   <div class="sp-top">
-    <svg class="sp-mark logo-mark on-dark"><use href="#brand-mark"/></svg>
+    <div class="sp-mark"><img class="brand-img icon" src="brand/18-sitters-icon-only-on-navy-adapted.svg" alt="18 Sitters"></div>
     <div class="sp-wordmark">18 Sitters</div>
     <div class="sp-tagline">Trusted Care · Jewish Values</div>
     <div class="sp-divider"></div>
@@ -1110,7 +1110,7 @@ body:not(.show-prototype-panel) .phone{box-shadow:0 24px 80px rgba(13,27,51,0.18
   <div class="sb on-dark"><span class="sb-t">9:41</span><div class="sb-i"><span>●●●</span></div></div>
   <div class="pw-wrap">
     <div style="text-align:center;">
-      <svg class="pw-mark logo-mark on-dark"><use href="#brand-mark"/></svg>
+      <img class="pw-mark brand-img icon" src="brand/18-sitters-icon-only-on-navy-adapted.svg" alt="18 Sitters">
       <div class="pw-title">Your free trial<br>has ended</div>
       <div class="pw-trial-badge">7 Days Enjoyed · Thank You</div>
       <div class="pw-sub">Choose a plan to keep connecting<br>with trusted Jewish caregivers and families.</div>
@@ -1178,7 +1178,7 @@ body:not(.show-prototype-panel) .phone{box-shadow:0 24px 80px rgba(13,27,51,0.18
 <div class="screen" id="s-payment-confirm">
   <div class="sb"><span class="sb-t">9:41</span><div class="sb-i"><span>●●●</span></div></div>
   <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:40px 32px;text-align:center;gap:22px;">
-    <svg style="width:96px;height:96px;" class="logo-mark"><use href="#brand-mark"/></svg>
+    <img style="width:96px;height:96px;" class="brand-img icon" src="brand/18-sitters-icon-only-on-ivory-adapted.svg" alt="18 Sitters">
     <div>
       <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:var(--navy);line-height:1.18;letter-spacing:-0.6px;">Welcome to<br>18 Sitters</div>
       <div class="tagline" style="margin-top:10px;">Trusted Care · Jewish Values</div>
@@ -1315,7 +1315,7 @@ body:not(.show-prototype-panel) .phone{box-shadow:0 24px 80px rgba(13,27,51,0.18
 <div class="side-panel">
   <div class="panel-card">
     <div class="panel-mark">
-      <svg class="logo-mark"><use href="#brand-mark"/></svg>
+      <img class="brand-img icon" src="brand/18-sitters-icon-only-on-ivory-adapted.svg" alt="18 Sitters">
       <div class="pm-text"><div class="pm-name">18 Sitters</div><div class="pm-tag">Trusted Care · Jewish Values</div></div>
     </div>
     <div class="panel-title">Navigate · Onboarding</div>
