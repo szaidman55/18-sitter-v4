@@ -6,6 +6,7 @@ Deployable static app prototype for 18 Sitters, rebuilt from the v4 HTML prototy
 
 - Production-ready `index.html` with metadata, app manifest, mobile viewport handling, and a hidden prototype navigation toggle.
 - Brand assets under `public/brand`.
+- Supabase Auth/Postgres setup under `supabase/migrations` and `SUPABASE_SETUP.md`.
 - Designer brief copy in `BRIEF.md`.
 - No-dependency build, check, and local preview scripts.
 - Netlify and Vercel static deployment config.
@@ -20,6 +21,10 @@ npm run cap:sync
 ```
 
 `npm run build` writes the deployable site to `dist/`.
+
+## Backend
+
+The app is wired for Supabase Auth + Postgres. Run the SQL migration in `supabase/migrations/` inside your Supabase project, then set `SUPABASE_URL` and `SUPABASE_ANON_KEY` before building.
 
 ## Deployment
 

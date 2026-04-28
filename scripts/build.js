@@ -19,4 +19,14 @@ fs.mkdirSync(dist, { recursive: true });
 fs.copyFileSync(path.join(root, "index.html"), path.join(dist, "index.html"));
 copyDir(path.join(root, "public"), dist);
 
+const config = {
+  supabaseUrl: process.env.SUPABASE_URL || "",
+  supabaseAnonKey: process.env.SUPABASE_ANON_KEY || "",
+  environment: process.env.APP_ENV || "local"
+};
+fs.writeFileSync(
+  path.join(dist, "config.js"),
+  `window.APP_CONFIG = ${JSON.stringify(config, null, 2)};\n`
+);
+
 console.log("Built static site to dist/");
