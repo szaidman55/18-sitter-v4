@@ -30,6 +30,12 @@ Recommended build settings:
 - Build command: `npm run build`
 - Publish directory: `dist`
 
+GitHub Pages fallback:
+
+- Source branch: `main`
+- Source folder: `/docs`
+- Expected URL: `https://szaidman55.github.io/18-sitter-v4/`
+
 ## Native App Store Builds
 
 This project uses Capacitor to generate native iOS and Android shells from the static web app.
