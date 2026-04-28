@@ -1,8 +1,10 @@
-const CACHE_NAME = "18-sitters-v4-static-v4";
+const CACHE_NAME = "18-sitters-v4-static-v5";
 const APP_SHELL = [
   "./",
   "index.html",
   "manifest.webmanifest",
+  "config.js",
+  "app-backend.js",
   "icons/icon-192.png",
   "icons/icon-512.png"
 ];
