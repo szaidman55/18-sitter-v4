@@ -25,6 +25,8 @@ create table if not exists public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   role public.user_role not null default 'family',
   full_name text,
+  first_name text,
+  last_name text,
   phone text,
   avatar_url text,
   city text,
@@ -149,11 +151,13 @@ security definer
 set search_path = public
 as $$
 begin
-  insert into public.profiles (id, role, full_name, phone)
+  insert into public.profiles (id, role, full_name, first_name, last_name, phone)
   values (
     new.id,
     coalesce((new.raw_user_meta_data->>'role')::public.user_role, 'family'),
     new.raw_user_meta_data->>'full_name',
+    new.raw_user_meta_data->>'first_name',
+    new.raw_user_meta_data->>'last_name',
     new.raw_user_meta_data->>'phone'
   )
   on conflict (id) do nothing;

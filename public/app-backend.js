@@ -36,14 +36,16 @@ function setBusy(isBusy) {
 async function handleSignup(event) {
   if (event) event.preventDefault();
 
-  const fullName = value("signup-name");
+  const firstName = value("signup-first-name");
+  const lastName = value("signup-last-name");
+  const fullName = [firstName, lastName].filter(Boolean).join(" ");
   const email = value("signup-email");
   const password = value("signup-password");
   const phone = value("signup-phone");
   const role = window.userRole || "family";
 
-  if (!email || !password) {
-    setAuthStatus("Enter an email and password to create the account.", "err");
+  if (!firstName || !lastName || !email || !password) {
+    setAuthStatus("Enter your first name, last name, email, and password to create the account.", "err");
     return;
   }
 
@@ -62,6 +64,8 @@ async function handleSignup(event) {
       options: {
         data: {
           full_name: fullName,
+          first_name: firstName,
+          last_name: lastName,
           phone,
           role
         }
